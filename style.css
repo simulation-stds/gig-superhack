@@ -1,0 +1,774 @@
+/***** WORLD DESKTOP *****/
+:root {
+    --ice: rgb(251, 251, 251);
+    --ice-70a: rgb(251, 251, 251, 0.7); 
+    --neon: rgb(227, 255, 60);
+    --neon-10a: rgb(227, 255, 60, 0.1);
+    --navy: rgb(110, 131, 255);
+    --navy-400: rgb(89, 110, 236);
+    --navy-600: rgb(63, 93, 186);
+    --navy-600-80a: rgb(63, 93, 186, 0.8);
+    --navy-grad: linear-gradient(0deg, rgba(73,95,222,1) -10%, rgba(110,131,255,1) 100%);
+    --titles: "Unbounded", sans-serif;
+    --content: "Space Grotesk", sans-serif;
+}
+*{
+    transition: all 0.2s;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    background-color: var(--ice);
+    scroll-padding-top: 124px;
+}
+ul {
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+}
+/***** Screen 1920 *****/
+    /***** NAVBAR *****/
+    nav {
+        z-index: 10;
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        background-color: var(--ice-70a);
+        border-radius: 8px;
+        margin: 16px 2%;
+        padding: 8px 16px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        position: fixed;
+        width: 96%;
+        top: 0;
+        left: 0;
+    }
+    .menu {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+    }
+    .menu ul{
+        display: flex;
+        gap: 16px;
+    }
+    .menu a{
+        color: var(--navy-600);
+        font-family: var(--content);
+        font-weight: 600;   
+    }
+    .menu ul a:hover{
+        font-weight: 700;
+        border-bottom: 4px solid var(--neon);
+    }
+    .menu button{
+        padding: 8px 16px;
+        font-family: var(--content);
+        font-weight: 700;
+        font-size: 1.2em;
+        border-radius: 4px;
+        border: 0px;
+        background-color: var(--navy-400);
+        color: var(--neon);
+    }
+    .menu button:hover{
+        background-color: var(--navy-600);
+        cursor: pointer;
+        border-bottom: 0px;
+    }
+    .nav-spacer{
+        height: 92px;
+        width: auto;
+    }
+    /***** HEADER *****/
+    header{
+        margin: 24px 10%;
+        background: var(--navy-grad);
+        padding: 16px;
+        display: flex;
+        gap: 64px;
+        align-items: center;
+        border-radius: 16px;
+        justify-content: space-between;
+    }
+    .hello{
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        margin-left: 16px;
+        justify-content: space-between;
+        height: fit-content;
+    }
+    .live{
+        display: flex;
+        border: 1px solid var(--neon);
+        border-radius: 4px;
+        font-family: var(--content);
+        font-weight: 600;
+        padding: 4px 8px;
+        color: var(--neon);
+        gap: 8px;
+        align-items: center;
+        width: fit-content;
+    }
+    .dot{
+        width: 12px;
+        height: 12px;
+        background-color: var(--neon);
+        border-radius: 50%;
+    }
+    .title h1{
+        font-family: var(--titles);
+        color: var(--neon);
+        font-size: 5em;
+        font-weight: 700;
+        margin-bottom: 16px;
+    }
+    .title p{
+        font-family: var(--content);
+        color: var(--ice);
+        font-size: 2em;
+    }
+    .hello a{
+        width: max-content;
+    }
+    .hello button{
+        font-family: var(--content);
+        font-size: 1.2em;
+        font-weight: 700;
+        color: var(--navy-400);
+        padding: 8px 32px;
+        border: 0px;
+        border-radius: 4px;
+        background-color: var(--neon);
+        box-shadow: -6px 6px 0px 0px var(--navy-600);
+    }
+    .hello button:hover{
+        box-shadow: 0px 0px 0px 0px;
+        cursor: pointer;
+    }
+    .slider{
+        max-height: 440px;
+        min-height: 385px;
+        max-width: 320px;
+        min-width: 280px;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .wrap{
+        display: flex;
+        width: 400%;
+        animation: slideimg 12s ease-in-out infinite;
+    }
+    @keyframes slideimg {
+        0%{
+            transform: translateX(0);
+        }
+        24%{
+            transform: translateX(0);
+        }
+        25%{
+            transform: translateX(-25%);
+        }
+        49%{
+            transform: translateX(-25%);
+        }
+        50%{
+            transform: translateX(-50%);
+        }
+        74%{
+            transform: translateX(-50%);
+        }
+        75%{
+            transform: translateX(-75%);
+        }
+        100%{
+            transform: translateX(-75%);
+        }
+        
+    }
+    .freelance{
+        position: relative;
+        width: 100%;
+    }
+    .freelance img{
+        width: 100%;
+        height: 100%;
+    }
+    .one{
+        background-color: var(--neon);
+    }
+    .two{
+        background-color: var(--navy-600);
+    }
+    .three{
+        background-color: var(--ice);
+    }
+    .four{
+        background-color: var(--navy-600);
+    }
+    .freelance figcaption{
+        position: absolute;
+        background-color: var(--navy-600-80a);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 6px;
+        padding: 8px;
+        width: 94%;
+        margin: 3%;
+        left: 0;
+        bottom: 0;
+    }
+    .description{
+        margin-bottom: 24px;
+    }
+    .description h4{
+        font-family: var(--titles);
+        color: var(--ice);
+        font-size: 1.5em;
+    }
+    .description p{
+        font-family: var(--content);
+        color: var(--ice);
+    }
+    .verified {
+        display: flex;
+        justify-content: space-between;
+    }
+    .social {
+        display: flex;
+        gap: 8px;
+        font-family: var(--content);
+        color: var(--ice);
+        align-items: center;
+    }
+    .social img{
+        width: 24px;
+        height: auto;
+    }
+    .check {
+        display: flex;
+        font-family: var(--content);
+        color: var(--navy-600);
+        gap: 4px;
+        padding: 2px 4px;
+        background-color: var(--neon);
+        border-radius: 4px;
+        text-align: justify;
+    }
+    .check img{
+        width: 16px;
+        height: auto;
+    }
+    /***** FIELDS *****/
+    .fields{
+        overflow: hidden;
+        padding: 0 16px;
+        margin: 48px 0;
+    }
+    .fields ul{
+        display: flex;
+        gap: 16px;
+        margin: 16px 0px;
+    }
+    .fields li{
+        font-family: var(--content);
+        color: var(--navy-600);
+        font-weight: 600;
+        border: 1px solid var(--navy-600);
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 1.3em;
+        white-space: nowrap;
+    }
+    .top{
+        justify-content: flex-start;
+        animation: toplist 60s linear infinite;
+    }
+    .bottom{
+        justify-content: flex-end;
+        animation: bottomlist 62s linear infinite;
+    }
+    @keyframes toplist {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-65%);    
+        }
+    }
+    
+    @keyframes bottomlist {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(65%);    
+        }
+    }
+    /***** ABOUT *****/
+    .details{
+        display: flex;
+        margin: 80px 15%;
+        justify-content: space-between;
+        align-items: center;
+        gap: 48px;
+    }
+    .details h2{
+        font-family: var(--titles);
+        color: var(--navy-600);
+        font-size: 3em;
+        margin-bottom: 16px;
+    }
+    .details h3{
+        font-family: var(--content);
+        color: var(--navy);
+        font-size: 1.2em;
+    }
+    #about aside{
+        display: flex;
+        height: 300px;
+        gap: 24px;
+    }
+    .card{
+        position: relative;
+        background-color: var(--navy);
+        font-family: var(--content);
+        color: var(--ice);
+        max-width: 240px;
+        min-width: 180px;
+        max-height: 300px;
+        min-height: 225px;
+        padding: 16px;
+        border-radius: 8px;
+        overflow: hidden;
+        font-size: 1.2em;
+    }
+    .card svg{
+        position: absolute;
+        height: 200px;
+        fill: var(--navy-400);
+        bottom: -30px;
+        right: -30px;
+    }
+    .card:hover svg{
+        bottom: -20px;
+        right: -20px;
+    }
+    /***** NO FEES TABLE *****/
+    #zerofees{
+        background-color: var(--navy-600);
+        padding: 24px 15%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 80px 0; 
+        gap: 48px;
+    }
+    #zerofees h2{
+        font-family: var(--titles);
+        color: var(--neon);
+        font-size: 3em;
+        margin-bottom: 16px;
+    }
+    #zerofees h3{
+        font-family: var(--content);
+        color: var(--ice);
+        font-size: 1.2em; 
+    }
+    table{
+        font-family: var(--content);
+        font-size: 1.2rem;  
+        color: var(--ice);
+        text-align: center;
+        border-collapse: collapse;
+        font-weight: 500;
+    }
+    table img{
+        height: 30px;
+    }
+    table small{
+        font-weight: 300;
+    }
+    .gig img{
+        height: 40px;
+    }
+    .gig{
+        background-color: var(--neon-10a);
+        color: var(--neon);
+        font-weight: 700;
+    }
+    .row-title{
+        text-align: left;
+    }
+    td, th{
+        height: 80px;
+        padding: 0 16px;   
+    }
+    /***** ABOUT BOTTOM *****/
+    .ai aside{
+        display: flex;
+        font-family: var(--content);
+    }
+    .tasks{
+        background-color: var(--neon);
+        border-radius: 8px;
+        padding: 12px;
+        color: var(--navy-600);
+        height: fit-content;
+        margin-right: -120px;
+    }
+    .ai aside h4{
+        font-size: 1.2em;
+        margin-bottom: 8px;
+    }
+    .tasks li{
+        margin-bottom: 8px;
+    }
+    .tasks li::before{
+        content: url(assets/check.svg);
+        height: 16px;
+        width: 16px;
+        display: inline-block;
+        margin-right: 8px;
+        vertical-align: middle;
+    }
+    .sentiment{
+        background-color: var(--navy-600-80a);
+        padding: 12px;
+        border-radius: 8px;
+        height: fit-content;
+        color: var(--ice);
+        justify-content: flex-end;
+        margin-top: 120px;
+        margin-left: -110px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    .sentiment ul{
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+    }
+    .sentiment li{
+        align-content: center;
+    }
+    .sentiment p{
+        text-align: center;
+    }
+    .daoimg {
+        display: flex;
+        background: var(--navy-grad);
+        padding: 16px 16px;
+        border-radius: 8px;
+        justify-content: center;
+        align-items: center;
+        width: 550px;
+        max-width: 550px;
+        min-width: 332px;
+    }
+    /***** HOW TO *****/
+    #howto {
+        margin: 80px 15%;
+    }
+    #howto h2{
+        font-family: var(--titles);
+        color: var(--navy-600);
+        font-size: 3em;
+        margin-bottom: 24px;
+        text-align: center;
+    }
+    .roles{
+        display: flex;
+        justify-content: space-around;
+        font-family: var(--content);
+        color: var(--ice);
+        gap: 48px;
+    }
+    .roles h3{
+        font-size: 2em;
+        margin-bottom: 12px;
+    }
+    .roles p{
+        font-size: 1.5em;
+        margin-bottom: 24px;
+    }
+    .roles div{
+        background-color: var(--navy-600);
+        border-radius: 8px;
+        padding: 32px;
+    }
+    .roles li{
+        margin-bottom: 12px;
+        font-weight: 300;
+    }
+    .roles li::before{
+        content: url(assets/check.svg);
+        height: 16px;
+        width: 16px;
+        display: inline-block;
+        margin-right: 8px;
+        vertical-align: middle;
+        background-color: var(--neon);
+        border-radius: 2px;
+        padding: 2px;
+    }
+    /***** FOOTER *****/
+    footer{
+        background-color: var(--navy);
+        padding: 32px 5%;
+        font-family: var(--content);
+        color: var(--ice);
+        justify-content: center;
+    }
+    footer small{
+        color: var(--neon);
+    }
+    footer h4{
+        font-size: 1.2em;
+        margin-bottom: 12px;
+    }
+    footer li{
+        margin-bottom: 8px;
+        font-weight: 300;
+    }
+    footer section{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 32px;
+    }
+    .soon{
+        font-size: 0.6em;
+        background-color: var(--navy-400);
+        color: var(--navy);
+        padding: 2px 4px;
+        border-radius: 4px;
+        font-weight: 500;
+    }
+    .email{
+        color: var(--neon);
+        font-size: 2em;
+        font-weight: 600;
+    }
+    .socials{
+        display: flex;
+        gap: 8px;
+        margin-top: 20px;
+    }
+    .social-btn{
+        padding: 4px;
+        border: 1px solid var(--neon);
+        border-radius: 4px;
+        justify-content: space-around;
+    }
+    .social-btn svg{
+        display: flex;
+        align-items: center;
+        height: 24px;
+        fill: var(--neon);
+        align-self: center;
+    }
+    .social-btn:hover{
+        background-color: var(--neon);
+    }
+    .social-btn:hover svg{
+       fill: var(--navy-600);
+    }
+    .ip{
+        text-align: center;
+    }
+
+/***** Screen 1600 *****/
+@media screen and (max-width: 1600px) {
+    /***** HEADER *****/
+        header{
+            margin: 24px 5%;
+        }
+    /***** ABOUT *****/
+        .details{
+            margin: 80px 8%;
+        }
+    /***** NO FEES TABLE *****/
+        #zerofees{
+            padding: 24px 8%;
+        }
+    /***** HOW TO *****/
+        #howto {
+            margin: 80px 8%;
+        }
+    /***** FOOTER *****/
+    footer{
+        padding: 32px 2.5%;
+    }
+}
+
+/***** Screen 1024 *****/
+@media screen and (max-width: 1024px) {
+    /***** HEADER *****/
+    .hello{
+        gap: 16px;
+    }
+    .title h1{
+        font-size: 4em;
+        margin-bottom: 8px;
+    }
+    .title p{
+        font-size: 1.5em;
+    }
+    /***** ABOUT *****/
+    .details{
+        margin: 80px 5%;
+    }
+    /***** NO FEES TABLE *****/
+    #zerofees{
+        padding: 24px 5%;
+    }
+    /***** HOW TO *****/
+    #howto {
+        margin: 80px 5%;
+    }
+}
+
+/***** Screen 820 *****/
+@media screen and (max-width: 820px) {
+    /***** HEADER *****/
+    header{
+        gap: 32px;
+    }
+    .hello{
+        gap: 8px;
+    }
+    .title h1{
+        font-size: 3em;
+        margin-bottom: 8px;
+    }
+    .title p{
+        font-size: 1.2em;
+    }
+    /***** ABOUT *****/
+    .details{
+        margin: 80px 5%;
+        gap: 32px;
+    }
+    /***** NO FEES TABLE *****/
+        #zerofees{
+            padding: 24px 5%;
+            flex-direction: column;
+        }
+    /***** ABOUT BOTTOM *****/
+    .ai aside{
+        flex-direction: column;
+    }
+    .tasks{
+        margin-right: 0;
+        margin-bottom: -80px;
+    }
+    .sentiment{
+        margin-left: 0;
+        margin-top: -120px;
+    }
+    /***** HOW TO *****/
+        #howto {
+            margin: 80px 5%;
+        }
+        .roles{
+            gap: 32px;
+        }
+    /***** FOOTER ****/
+        .email{
+            font-size: 1.5em;
+        }
+}
+
+/***** Screen 540 *****/
+@media screen and (max-width: 540px) {
+    /***** NAVBAR *****/
+    .menu ul {
+        display: none;
+    }
+    /***** HEADER *****/
+    header{
+        flex-direction: column;
+    }
+     /***** ABOUT *****/
+     .details {
+        flex-direction: column;
+     }
+     .payments{
+        flex-direction: column-reverse;
+     }
+     .daoimg{
+        width: 100%;
+     }
+    /***** FEES TABLE *****/
+    table{
+        font-size: 1rem;  
+    }
+    table img{
+        height: 24px;
+    }
+    .gig img{
+        height: 32px;
+    }
+    /***** ABOUT BOTTOM *****/
+    .ai aside{
+        flex-direction: row;
+    }
+    .tasks{
+        margin-right: -120px;
+    }
+    .sentiment{
+        margin-left: -120px;
+        margin-top: 120px;
+    }
+    /***** HOW TO *****/
+    .roles{
+        flex-direction: column;
+    }
+    /***** FOOTER *****/
+    footer section{
+        flex-direction: column-reverse;
+        gap: 32px;
+        padding: 32px 5%;
+    }
+}
+
+/***** Screen 430 *****/
+@media screen and (max-width: 430px) {
+    /***** ABOUT *****/
+    #about aside{
+        gap: 8px;
+    }
+    /***** FEES TABLE *****/
+    table{
+        font-size: 0.8em;
+    }
+    table img{
+        height: 20px;
+    }
+    .gig img{
+        height: 24px;
+    }
+    td, th{
+        height: 64px;
+        padding: 0 8px;   
+    }
+    /***** ABOUT BOTTOM *****/
+    .ai aside{
+        flex-direction: column;
+    }
+    .tasks{
+        margin-right: 0;
+        margin-bottom: -80px;
+    }
+    .sentiment{
+        margin-left: 0;
+        margin-top: -120px;
+    }
+    .dao{
+        flex-direction: column-reverse;
+    }
+}
