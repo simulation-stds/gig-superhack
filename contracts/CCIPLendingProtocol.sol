@@ -7,7 +7,7 @@ import {CCIPReceiver} from "@chainlink/contracts-ccip/src/v0.8/ccip/applications
 import {Client} from "@chainlink/contracts-ccip/src/v0.8/ccip/libraries/Client.sol";
 import {IERC20} from "@chainlink/contracts-ccip/src/v0.8/vendor/openzeppelin-solidity/v4.8.3/contracts/token/ERC20/IERC20.sol";
 import {SafeERC20} from "@chainlink/contracts-ccip/src/v0.8/vendor/openzeppelin-solidity/v4.8.3/contracts/token/ERC20/utils/SafeERC20.sol";
-//import {IPool} from "@aave/core-v3/contracts/interfaces/IPool.sol";
+import {IPool} from "@aave/core-v3/contracts/interfaces/IPool.sol";
 import {IComet} from "./interfaces/IComet.sol";
 
 contract CCIPLendingProtocol is CCIPReceiver, OwnerIsCreator {
@@ -58,7 +58,7 @@ contract CCIPLendingProtocol is CCIPReceiver, OwnerIsCreator {
     enum Status {
         Running,
         Done,
-        Rejected
+        Canceled
     }
 
     struct Transaction {
@@ -128,8 +128,8 @@ contract CCIPLendingProtocol is CCIPReceiver, OwnerIsCreator {
         bytes32 uniqueId = generateID(msg.sender, _amount);
 
         bytes memory txData = abi.encodeCall(
-            IComet.supply,
-            (_usdcToken, _amount)
+            IPool.supply,
+            (_usdcToken, _amount, s_receivers[_destinationChainSelector], 0)
         );
 
         Transaction memory transaction = Transaction(
@@ -167,9 +167,16 @@ contract CCIPLendingProtocol is CCIPReceiver, OwnerIsCreator {
         uint64 _destinationChainSelector
     ) external {
         bytes memory txData = abi.encodeCall(
-            IComet.withdraw,
-            (_usdcToken, _amount)
+            IPool.withdraw,
+            (_usdcToken, _amount, s_receivers[_destinationChainSelector])
         );
+        Status temp_status;
+
+        if (freelancer == address(0)) {
+            temp_status = Status.Canceled;
+        } else {
+            temp_status = Status.Done;
+        }
 
         Transaction memory transaction = Transaction(
             msg.sender,
@@ -177,7 +184,7 @@ contract CCIPLendingProtocol is CCIPReceiver, OwnerIsCreator {
             _amount,
             txData,
             id,
-            Status.Done
+            temp_status
         );
 
         Client.EVMTokenAmount[]
@@ -275,11 +282,11 @@ contract CCIPLendingProtocol is CCIPReceiver, OwnerIsCreator {
         if (!success) {
             revert TransferFailed();
         }
-        bool succ_tx;
+        bool transfer_succ;
 
         // withdraw money to Freelancer
         if (txReceived.status == Status.Done) {
-            succ_tx = i_usdcToken.transferFrom(
+            transfer_succ = i_usdcToken.transferFrom(
                 address(this),
                 txReceived.frelancer,
                 txReceived.amount
@@ -287,8 +294,8 @@ contract CCIPLendingProtocol is CCIPReceiver, OwnerIsCreator {
         }
 
         // withdraw money to Client
-        if (txReceived.status == Status.Rejected) {
-            succ_tx = i_usdcToken.transferFrom(
+        if (txReceived.status == Status.Canceled) {
+            transfer_succ = i_usdcToken.transferFrom(
                 address(this),
                 txReceived.initiator,
                 txReceived.amount
@@ -296,7 +303,7 @@ contract CCIPLendingProtocol is CCIPReceiver, OwnerIsCreator {
         }
 
         // check if transaction succesfull
-        if (!succ_tx) {
+        if (!transfer_succ) {
             revert TransferFailed();
         }
 
@@ -381,3 +388,4 @@ contract CCIPLendingProtocol is CCIPReceiver, OwnerIsCreator {
     }
     */
 }
+
